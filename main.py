@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
-
+from _thread import *
+client_sockets = []
 app = Flask(__name__)
 
 @app.route("/")
