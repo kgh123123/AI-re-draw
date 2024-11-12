@@ -5,7 +5,7 @@ from io import BytesIO
 from diffusers import StableDiffusionImg2ImgPipeline
 
 device = "cpu"
-pipe = StableDiffusionImg2ImgPipeline.from_pretrained("nitrosocke/Ghibli-Diffusion", torch_dtype=torch.float16).to(
+pipe = StableDiffusionImg2ImgPipeline.from_pretrained("nitrosocke/Ghibli-Diffusion").to(
     device
 )
 
@@ -19,3 +19,4 @@ prompt = "ghibli style, a fantasy landscape with castles"
 generator = torch.Generator(device=device).manual_seed(1024)
 image = pipe(prompt=prompt, image=init_image, strength=0.75, guidance_scale=7.5, generator=generator).images[0]
 print(type(image))
+image.save("output.png","PNG")
