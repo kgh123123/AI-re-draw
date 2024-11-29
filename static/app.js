@@ -11,9 +11,10 @@ const color = document.getElementById("color");
 const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+const sendBtn = document.getElementById('send')
 
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 800;
+const CANVAS_WIDTH = 1200;
+const CANVAS_HEIGHT = 700;
 
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
@@ -110,6 +111,34 @@ function onSaveClick() {
   a.click();
 }
 
+function onSendServer() {
+  const img = canvas.toDataURL();
+  const formData = new FormData();
+  formData.append('image',img)
+
+  var url = location.href+"/make_it";
+  fetch(url,{
+    method: 'POST',
+    body: formData
+  }).then(response => {
+    if (!response.ok) {
+      alert("요청을 보내는 중 문제가 발생했습니다.");
+    }
+  })
+  .then(data => {
+    console.log('성공:', data);
+    const image = new Image();
+    image.src = data;
+    image.onload = function () {
+      ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      fileInput.value = null;
+    };
+  })
+  .catch(error => {
+    console.log('오류:', error);
+  });
+}
+
 canvas.addEventListener("dblclick", onDoubleCLick);
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
@@ -124,3 +153,4 @@ destroyBtn.addEventListener("click", onDestroyClick);
 eraserBtn.addEventListener("click", onEraserClick);
 fileInput.addEventListener("change", onFileChange);
 saveBtn.addEventListener("click", onSaveClick);
+sendBtn.addEventListener("click", onSendServer)

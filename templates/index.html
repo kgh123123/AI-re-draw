@@ -8,9 +8,9 @@
   </head>
   <body>
     <canvas></canvas>
-    <input id="line-width" type="range" min="1" max="10" value="5" step="0.1">
-    <div>
-      <input type="color" id="color" />
+    <div class="paint-options">
+      <input id="line-width" type="range" min="1" max="10" value="5" step="0.1">
+      <input class="sellecter" type="color" id="color" />
       <div class="color-option" style="background-color: #1abc9c" data-color="#1abc9c"></div>
       <div class="color-option" style="background-color: #3498db" data-color="#3498db"></div>
       <div class="color-option" style="background-color: #34495e" data-color="#34495e"></div>
@@ -24,12 +24,15 @@
       <div class="color-option" style="background-color: #2ecc71" data-color="#2ecc71"></div>
       <div class="color-option" style="background-color: #e67e22" data-color="#e67e22"></div>
     </div>
-    <button id="mode-btn">Fill</button>
-    <button id="destroy-btn">Destroy</button>
-    <button id="eraser-btn">Erase</button>
-    <input type="file" accept="image/*" id="file"/>
-    <input type="text" placeholder="Write and then double click" id="text" />
-    <button id="save">Save image</button>
+    <div>
+      <button id="mode-btn">Fill</button>
+      <button id="destroy-btn">Destroy</button>
+      <button id="eraser-btn">Erase</button>
+      <input type="file" accept="image/*" id="file"/>
+      <input type="text" placeholder="Write and then double click" id="text"/>
+      <button id="save">Save image</button>
+      <button id="send">Imagegoodrizer</button>
+    </div>
     <script src="{{ url_for('static', filename='app.js') }}"></script>
   </body>
 </html>
