@@ -1,4 +1,6 @@
-from tensorflow.keras.applications import inception_v3  # <-- 이 부분이 반드시 포함되어야 합니다
+#https://github.com/ajitashwathr10/AI-Powered-Image-Generation
+
+from tensorflow.keras.applications import inception_v3
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 from tensorflow.random import normal
 import numpy as np
@@ -24,7 +26,8 @@ def preprocess_img(img_path):
 
 #Function - Generate image noise
 def generate_noise(shape):
-    return normal(shape=shape, mean=0, stddev=1).numpy()
+    return normal(shape=shape, mean=0, stddev=1).numpy()   #error -> normal(평균, 표준편차, 데이터 수)
+    #return normal(0, 1, size = shape).astype("float32")
 
 
 # Function - Generate a virtual image
