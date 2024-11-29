@@ -1,22 +1,14 @@
-/* 전체 화면 정렬 */
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+    margin: 10px;
 }
 
-/* 캔버스 스타일 */
 canvas {
-    width: 800px;
-    height: 800px;
+    width: 1200px;
+    height: 700px;
     border: 5px solid #333;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin-bottom: 10px
 }
 
 /* 색상 선택 및 설정 */
@@ -30,7 +22,6 @@ canvas {
     cursor: pointer;
     border-radius: 5px;
     margin: 5px;
-    display: inline-block;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s;
 }
@@ -80,4 +71,9 @@ button:active {
 /* 파일 입력 버튼 */
 input[type="file"] {
     margin-top: 15px;
+}
+
+.paint-options{
+    display: block;
+    position: relative;
 }
