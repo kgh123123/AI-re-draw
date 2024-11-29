@@ -8,6 +8,7 @@ device = "cpu"
 pipe = StableDiffusionImg2ImgPipeline.from_pretrained("nitrosocke/Ghibli-Diffusion").to(
     device
 )
+#특징 추출하기: https://github.com/giakoumoglou/pyfeats
 
 url = "https://raw.githubusercontent.com/CompVis/stable-diffusion/main/assets/stable-samples/img2img/sketch-mountains-input.jpg"
 
