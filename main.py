@@ -21,7 +21,7 @@ def base64toimg(encode_image):
 def make_it():
     encode_image = request.form.get('image')
     img = base64toimg(encode_image)
-    img.save("saved_img.png")
+    img.save("imgs/saved_img.png")
     
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
