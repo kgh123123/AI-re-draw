@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from utility import *
 
 app = Flask(__name__)
+app.secret_key = 'LN$oaYB9-5KBT7G'
 
 @app.route("/")
 def main():
