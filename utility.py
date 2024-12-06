@@ -4,7 +4,7 @@ import base64
 
 def img_to_base64(image):
     buffered = io.BytesIO()
-    image.save(buffered, format="JPEG")
+    image.save(buffered, format="PNG")
     encode_image = base64.b64encode(buffered.getvalue()).decode('utf8')
     return encode_image
 

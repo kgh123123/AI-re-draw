@@ -12,11 +12,11 @@ API_KEY = os.getenv("SEGMIND_API_KEY")
 url = "https://api.segmind.com/v1/ssd-img2img"
 img = Image.open("imgs/lion.png")
 
-def send_to_api(image):
+def send_to_api(image, prompt:str):
     random_seed = random.randint(1, 99999999)
     data = {
         "image": img_to_base64(image),
-        "prompt": "scary lion",
+        "prompt": prompt,
         "samples": 1,
         "scheduler": "Euler a",
         "num_interface_steps": 30,
@@ -38,6 +38,8 @@ def send_to_api(image):
             print(f"이미지가 저장되었습니다: {output_path}")
         except Exception as e:
             print(f"이미지 처리 중 오류가 발생했습니다: {e}")
+            raise e
     else:
         print(f"API 요청 실패: {response.status_code}")
         print(f"응답 내용: {response.text}")
+        raise Exception("API에서 잘못된 응답을 보냈습니다.")
