@@ -17,7 +17,7 @@ def make_it():
     try:
         img = base64_to_img(encode_image)
         image2image.send_to_api(img,'lion')
-        return send_file('imgs/output.png', mimetype="image/png")
+        return send_file('static/output.png', mimetype="image/png")
     except Exception as e:
         print(e)
         return str(e), 500
