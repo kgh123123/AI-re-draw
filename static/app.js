@@ -114,16 +114,18 @@ function onSaveClick() {
 function onSendServer() {
   const img = canvas.toDataURL();
   const formData = new FormData();
-  formData.append('image',img)
+  formData.append('image', img);
 
-  var url = location.href+"/make_it";
-  fetch(url,{
+  var url = location.href + "/make_it";
+  fetch(url, {
     method: 'POST',
     body: formData
   }).then(response => {
     if (!response.ok) {
       alert("요청을 보내는 중 문제가 발생했습니다.");
+      throw new Error('Network response was not ok');
     }
+    return response.text();
   })
   .then(data => {
     console.log('성공:', data);

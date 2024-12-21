@@ -10,7 +10,7 @@ load_dotenv()
 
 API_KEY = os.getenv("SEGMIND_API_KEY")
 url = "https://api.segmind.com/v1/ssd-img2img"
-img = Image.open("static/lion.png")
+#img = Image.open("static/lion.png")
 
 def send_to_api(image, prompt:str):
     random_seed = random.randint(1, 99999999)
@@ -31,11 +31,11 @@ def send_to_api(image, prompt:str):
 
     if response.status_code == 200:
         try:
-            # BytesIO를 통해 바이트 데이터를 PIL 이미지로 변환
-            img = Image.open(BytesIO(response.content))  # 이미지 객체 생성
+            img = Image.open(BytesIO(response.content))
             output_path = "static/output.png"
-            img.save(output_path)  # 이미지 저장
+            img.save(output_path)
             print(f"이미지가 저장되었습니다: {output_path}")
+            return output_path
         except Exception as e:
             print(f"이미지 처리 중 오류가 발생했습니다: {e}")
             raise e
