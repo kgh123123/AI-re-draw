@@ -15,8 +15,9 @@ def make_it():
     encode_image = request.form.get('image')
     try:
         img = base64_to_img(encode_image)
-        output_path = 'static/output.png'#image2image.send_to_api(img, 'lion')
-        return output_path
+        prompt = 'lion'
+        image2image.send_to_api(img, prompt)
+        return 'static/output.png'
     except Exception as e:
         print(e)
         return str(e), 500

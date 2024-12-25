@@ -35,7 +35,6 @@ def send_to_api(image, prompt:str):
             output_path = "static/output.png"
             img.save(output_path)
             print(f"이미지가 저장되었습니다: {output_path}")
-            return output_path
         except Exception as e:
             print(f"이미지 처리 중 오류가 발생했습니다: {e}")
             raise e
