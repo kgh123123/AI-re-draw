@@ -112,32 +112,33 @@ function onSaveClick() {
 }
 
 function onSendServer() {
-  const img = canvas.toDataURL();
-  const formData = new FormData();
-  formData.append('image', img);
+  canvas.toBlob(function(blob) {
+    const formData = new FormData();
+    formData.append('image', blob, 'image.png');
 
-  var url = location.href + "/make_it";
-  fetch(url, {
-    method: 'POST',
-    body: formData
-  }).then(response => {
-    if (!response.ok) {
-      alert("요청을 보내는 중 문제가 발생했습니다.");
-      throw new Error('Network response was not ok');
-    }
-    return response.text();
-  })
-  .then(data => {
-    console.log('성공:', data);
-    const image = new Image();
-    image.src = data;
-    image.onload = function () {
-      ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    };
-  })
-  .catch(error => {
-    console.log('오류:', error);
-  });
+    var url = location.href + "/make_it";
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    }).then(response => {
+      if (!response.ok) {
+        alert("요청을 보내는 중 문제가 발생했습니다.");
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log('성공:', data);
+      const image = new Image();
+      image.src = data;
+      image.onload = function () {
+        ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      };
+    })
+    .catch(error => {
+      console.error('오류:', error);
+    });
+  }, 'image/png');
 }
 
 canvas.addEventListener("dblclick", onDoubleCLick);
