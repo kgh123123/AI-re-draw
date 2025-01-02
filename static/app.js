@@ -11,9 +11,9 @@ const color = document.getElementById("color");
 const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const sendBtn = document.getElementById('send')
+const sendBtn = document.getElementById('send') //차현준
 
-const CANVAS_WIDTH = 1200;
+const CANVAS_WIDTH = 700;
 const CANVAS_HEIGHT = 700;
 
 canvas.width = CANVAS_WIDTH;
@@ -113,9 +113,16 @@ function onSaveClick() {
 
 function onSendServer() {
   document.getElementById('loading-overlay').style.display = 'flex';
+  const prompt_input = document.getElementById('prompt').value;
+  if (!prompt_input) {
+    alert("프롬프트를 입력해주세요.");
+    document.getElementById('loading-overlay').style.display = 'none';
+    throw new Error('prompt is empty');
+  }
   canvas.toBlob(function(blob) {
     const formData = new FormData();
     formData.append('image', blob, 'image.png');
+    formData.append('prompt', prompt_input)
 
     var url = location.href + "/make_it";
     fetch(url, {

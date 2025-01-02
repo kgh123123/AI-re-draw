@@ -14,13 +14,11 @@ def main():
 @app.route("/make_it",methods=['POST'])
 def make_it():
     print('요청을 받았습니다.')
-    image_file = request.files.get('image')
-    if image_file is None:
-        return 'No image provided', 400
-
     try:
+        image_file = request.files.get('image')
+        prompt = request.form.get('prompt', 'lion')
+        print('prompt:', prompt)
         img = Image.open(io.BytesIO(image_file.read()))
-        prompt = 'lion' 
         image2image.send_to_api(img, prompt)
         return 'static/output.png'
     except Exception as e:
