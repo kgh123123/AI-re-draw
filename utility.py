@@ -14,3 +14,18 @@ def base64_to_img(encode_image:str):
     binary = base64.b64decode(code)
     image = Image.open(io.BytesIO(binary))
     return image
+
+def resize_image(image, size):
+    return image.resize(size, Image.ANTIALIAS)
+
+def rotate_image(image, angle):
+    return image.rotate(angle, expand=True)
+
+def convert_to_grayscale(image):
+    return image.convert("L")
+
+def crop_image(image, box):
+    return image.crop(box)
+
+def save_image(image, path, format="PNG"):
+    image.save(path, format=format)
