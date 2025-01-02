@@ -112,6 +112,7 @@ function onSaveClick() {
 }
 
 function onSendServer() {
+  document.getElementById('loading-overlay').style.display = 'flex';
   canvas.toBlob(function(blob) {
     const formData = new FormData();
     formData.append('image', blob, 'image.png');
@@ -123,6 +124,7 @@ function onSendServer() {
     }).then(response => {
       if (!response.ok) {
         alert("요청을 보내는 중 문제가 발생했습니다.");
+        document.getElementById('loading-overlay').style.display = 'none'
         throw new Error('Network response was not ok');
       }
       return response.text();
@@ -134,11 +136,14 @@ function onSendServer() {
       image.onload = function () {
         ctx.drawImage(image, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
       };
+      document.getElementById('loading-overlay').style.display = 'none'
     })
     .catch(error => {
       console.error('오류:', error);
+      document.getElementById('loading-overlay').style.display = 'none'
     });
   }, 'image/png');
+  
 }
 
 canvas.addEventListener("dblclick", onDoubleCLick);
