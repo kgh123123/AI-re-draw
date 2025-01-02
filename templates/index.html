@@ -29,14 +29,17 @@
       <div class="color-option" style="background-color: #2ecc71" data-color="#2ecc71"></div>
       <div class="color-option" style="background-color: #e67e22" data-color="#e67e22"></div>
     </div>
-    <div>
-      <button id="mode-btn">Fill</button>
-      <button id="destroy-btn">Destroy</button>
-      <button id="eraser-btn">Erase</button>
+    <div class="container">
+      <div class="row">
+        <button id="mode-btn">Fill</button>
+        <button id="destroy-btn">Destroy</button>
+        <button id="eraser-btn">Erase</button>
+      </div>
       <input type="file" accept="image/*" id="file"/>
-      <input type="text" placeholder="Write and then double click" id="text"/>
+      <input type="text" placeholder="글을 쓰시고 더블클릭을 하세요" id="text"/>
       <button id="save">Save image</button>
-      <button id="send">Imagegoodrizer</button>
+      <button id="send">Generate</button>
+      <input type="text" placeholder="이미지의 프롬프트를 넣어주세요" id="prompt"/>
     </div>
     <script src="{{ url_for('static', filename='app.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>ㄴ
