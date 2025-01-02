@@ -20,7 +20,7 @@ def make_it():
 
     try:
         img = Image.open(io.BytesIO(image_file.read()))
-        prompt = 'lion'
+        prompt = 'lion' 
         image2image.send_to_api(img, prompt)
         return 'static/output.png'
     except Exception as e:

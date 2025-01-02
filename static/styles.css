@@ -71,6 +71,7 @@ button:active {
 /* 파일 입력 버튼 */
 input[type="file"] {
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .paint-options{
@@ -95,4 +96,17 @@ input[type="file"] {
 .spinner-border {
     width: 3rem;
     height: 3rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 30%;
+    margin-left: 2px;
 }
